@@ -129,10 +129,6 @@
             background-image: linear-gradient(120deg, #fbccff, #d8f9ff, #d4c6ff);
         }
 
-        }
-
-            background-image: linear-gradient(120deg, #fbccff, #d8f9ff, #d4c6ff);        }
-
         .header {
             width: 100%;
             text-align: center;
@@ -1193,6 +1189,32 @@ h2{
 
             // Start the animation
             animateCircles();
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-tabs .nav-link');
+
+    function setActiveLink() {
+        const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('data-page');
+            if (currentPage === linkPage || (currentPage === '' && linkPage === 'home')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    setActiveLink();
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+});
         </script>
 </body>
 
